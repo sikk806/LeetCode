@@ -1,22 +1,16 @@
 class Solution {
 public:
     int removeDuplicates(vector<int>& nums) {
-        vector<int> answer;
-        answer.push_back(nums[0]);
-        
-        int count = 1;
-
-        for(int i = 1; i < nums.size(); i++)
+        int i = 1, j = 0;
+        for(i; i < nums.size(); i++)
         {
-            if(answer[count-1] != nums[i])
+            if(nums[i] != nums[j])
             {
-                answer.push_back(nums[i]);
-                count++;
+                j++;
+                nums[j] = nums[i];
             }
         }
-        cout << count << endl;
-        nums = answer;
 
-        return count;
+        return j+1;
     }
 };
